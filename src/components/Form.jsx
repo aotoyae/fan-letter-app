@@ -82,6 +82,14 @@ function Form({ letters, setLetters, activeMember, setActiveMember }) {
     }
   };
 
+  const handleOnInput = (e, maxlength) => {
+    const {
+      target: { value },
+    } = e;
+    console.log(e);
+    if (value.length > maxlength) e.target.value = value.substr(0, maxlength);
+  };
+
   return (
     <StForm onSubmit={addLetter}>
       <StSection>
@@ -89,9 +97,9 @@ function Form({ letters, setLetters, activeMember, setActiveMember }) {
         <input
           type="text"
           value={nickName}
+          onInput={(e) => handleOnInput(e, 20)}
           onChange={(e) => setNickName(e.target.value)}
           placeholder="최대 20자"
-          maxLength={20}
         />
         <StLabel>내용</StLabel>
         <textarea
