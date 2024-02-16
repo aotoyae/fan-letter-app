@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { memberData } from "shared/memberData";
 import styled, { css } from "styled-components";
@@ -29,9 +28,7 @@ const StBtn = styled.button`
   cursor: pointer;
 `;
 
-function Tabs() {
-  const [activeMember, setActiveMember] = useState("");
-
+function Tabs({ activeMember, setActiveMember }) {
   const onActiveMember = (e) => {
     setActiveMember(e.target.innerHTML);
   };

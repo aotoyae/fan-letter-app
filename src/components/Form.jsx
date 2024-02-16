@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import uuid from "react-uuid";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const StForm = styled.form`
   height: 100%;
@@ -47,14 +48,10 @@ const StBtn = styled.button`
   height: 35px;
 `;
 
-function Form({ memberId, letters, setLetters }) {
+function Form({ letters, setLetters, activeMember, setActiveMember }) {
   const [nickName, setNickName] = useState("");
   const [content, setContent] = useState("");
-  const [member, setMember] = useState(memberId);
-
-  useEffect(() => {
-    setMember(memberId);
-  }, [memberId]);
+  const navigate = useNavigate();
 
   const addLetter = (e) => {
     e.preventDefault();
@@ -76,7 +73,7 @@ function Form({ memberId, letters, setLetters }) {
           second: "2-digit",
         }),
         content,
-        writedTo: member,
+        writedTo: activeMember,
       };
 
       setLetters([...letters, newLetter]);
@@ -106,9 +103,15 @@ function Form({ memberId, letters, setLetters }) {
       </StSection>
       <StSelectSection>
         <StLabel>To </StLabel>
-        <select defaultValue="base" onChange={(e) => setMember(e.target.value)}>
+        <select
+          defaultValue="base"
+          onChange={(e) => {
+            setActiveMember(e.target.value);
+            navigate(`/member/${e.target.value}`);
+          }}
+        >
           <option value="base" disabled>
-            {member}
+            {activeMember}
           </option>
           <option value="mads">Mads</option>
           <option value="jonathan"> Jonathan</option>

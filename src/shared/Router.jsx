@@ -7,10 +7,11 @@ import { useState } from "react";
 
 export default function Router() {
   const [letters, setLetters] = useState([]);
+  const [activeMember, setActiveMember] = useState("");
 
   return (
     <BrowserRouter>
-      <Layout>
+      <Layout activeMember={activeMember} setActiveMember={setActiveMember}>
         <Routes>
           <Route
             path="/"
@@ -20,11 +21,25 @@ export default function Router() {
           />
           <Route
             path="/member/:id"
-            element={<Member letters={letters} setLetters={setLetters} />}
+            element={
+              <Member
+                letters={letters}
+                setLetters={setLetters}
+                activeMember={activeMember}
+                setActiveMember={setActiveMember}
+              />
+            }
           />
           <Route
             path="/detail/:id"
-            element={<Detail letters={letters} setLetters={setLetters} />}
+            element={
+              <Detail
+                letters={letters}
+                setLetters={setLetters}
+                activeMember={activeMember}
+                setActiveMember={setActiveMember}
+              />
+            }
           />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>

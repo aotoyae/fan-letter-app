@@ -25,17 +25,22 @@ const StArticle = styled.article`
   border: 1px solid #000;
 `;
 
-function LetterBox({ memberId, letters, setLetters }) {
+function LetterBox({ letters, setLetters, activeMember, setActiveMember }) {
   return (
     <StWrap>
       <StArticle>
-        <Form memberId={memberId} letters={letters} setLetters={setLetters} />
+        <Form
+          letters={letters}
+          setLetters={setLetters}
+          activeMember={activeMember}
+          setActiveMember={setActiveMember}
+        />
       </StArticle>
       <StArticle>
         <LetterList
-          memberId={memberId}
           letters={letters}
           setLetters={setLetters}
+          activeMember={activeMember}
         />
       </StArticle>
     </StWrap>

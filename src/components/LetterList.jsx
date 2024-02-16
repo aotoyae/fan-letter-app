@@ -35,17 +35,17 @@ const Content = styled.p`
   text-overflow: ellipsis;
 `;
 
-function LetterList({ memberId, letters }) {
+function LetterList({ activeMember, letters }) {
   const navigate = useNavigate();
 
   const filteredLetters = letters.filter(
-    (letter) => letter.writedTo === memberId
+    (letter) => letter.writedTo === activeMember
   );
 
   return (
     <ul>
       {filteredLetters.length === 0 ? (
-        <p>{memberId} 에게 보내는 첫 팬레터의 주인공이 되어보세요!</p>
+        <p>{activeMember} 에게 보내는 첫 팬레터의 주인공이 되어보세요!</p>
       ) : (
         filteredLetters.map((letter) => {
           return (

@@ -18,11 +18,11 @@ const StLink = styled(Link)`
   color: #000;
 `;
 
-function Header() {
+function Header({ activeMember, setActiveMember }) {
   return (
     <StHeader>
       <StLink to={`/`}>Phlake</StLink>
-      <Tabs />
+      <Tabs activeMember={activeMember} setActiveMember={setActiveMember} />
     </StHeader>
   );
 }

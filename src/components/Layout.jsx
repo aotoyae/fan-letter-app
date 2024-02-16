@@ -13,11 +13,13 @@ const StCihldren = styled.div`
   border: 1px solid #000;
 `;
 
-function Layout({ children }) {
+function Layout({ children, activeMember, setActiveMember }) {
   return (
     <StLayout>
-      <Header />
-      <StCihldren>{children}</StCihldren>
+      <Header activeMember={activeMember} setActiveMember={setActiveMember} />
+      <StCihldren activeMember={activeMember} setActiveMember={setActiveMember}>
+        {children}
+      </StCihldren>
       <Footer />
     </StLayout>
   );
