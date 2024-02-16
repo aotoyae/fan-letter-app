@@ -91,6 +91,13 @@ function Form() {
     }
   };
 
+  const handleOnInput = (e, maxlength) => {
+    const {
+      target: { value },
+    } = e;
+    if (value.length > maxlength) e.target.value = value.substr(0, maxlength);
+  };
+
   return (
     <StForm onSubmit={addLetter}>
       <StSection>
@@ -98,16 +105,16 @@ function Form() {
         <input
           type="text"
           value={nickName}
+          onInput={(e) => handleOnInput(e, 20)}
           onChange={(e) => setNickName(e.target.value)}
           placeholder="최대 20자"
-          maxLength={20}
         />
         <StLabel>내용</StLabel>
         <textarea
           value={content}
+          onInput={(e) => handleOnInput(e, 100)}
           onChange={(e) => setContent(e.target.value)}
           placeholder="최대 100자"
-          maxLength={100}
         />
       </StSection>
       <StSelectSection>
