@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import uuid from "react-uuid";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { LetterContext } from "context/LetterContext";
 import { MemberContext } from "context/MemberContext";
 
@@ -51,15 +51,10 @@ const StBtn = styled.button`
 
 function Form() {
   const { letters, setLetters } = useContext(LetterContext);
-  const { activeMember } = useContext(MemberContext);
+  const { activeMember, setActiveMember } = useContext(MemberContext);
 
   const [nickName, setNickName] = useState("");
   const [content, setContent] = useState("");
-  const [member, setMember] = useState(activeMember);
-
-  useEffect(() => {
-    setMember(activeMember);
-  }, [activeMember]);
 
   const addLetter = (e) => {
     e.preventDefault();
@@ -81,7 +76,7 @@ function Form() {
           second: "2-digit",
         }),
         content,
-        writedTo: member,
+        writedTo: activeMember,
       };
 
       setLetters([...letters, newLetter]);
@@ -111,9 +106,12 @@ function Form() {
       </StSection>
       <StSelectSection>
         <StLabel>To </StLabel>
-        <select defaultValue="base" onChange={(e) => setMember(e.target.value)}>
+        <select
+          defaultValue="base"
+          onChange={(e) => setActiveMember(e.target.value)}
+        >
           <option value="base" disabled>
-            {member}
+            {activeMember}
           </option>
           <option value="mads">Mads</option>
           <option value="jonathan"> Jonathan</option>
