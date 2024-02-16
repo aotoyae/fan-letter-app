@@ -11,7 +11,7 @@ export default function Router() {
 
   return (
     <BrowserRouter>
-      <Layout activeMember={activeMember} setActiveMember={setActiveMember}>
+      <Layout $activeMember={activeMember} $setActiveMember={setActiveMember}>
         <Routes>
           <Route
             path="/"
