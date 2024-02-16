@@ -108,7 +108,7 @@ function Form({ memberId, letters, setLetters }) {
         <StLabel>To </StLabel>
         <select defaultValue="base" onChange={(e) => setMember(e.target.value)}>
           <option value="base" disabled>
-            ======
+            {member}
           </option>
           <option value="mads">Mads</option>
           <option value="jonathan"> Jonathan</option>

@@ -1,7 +1,7 @@
 import LetterBox from "components/LetterBox";
 import ToHeader from "components/ToHeader";
 import { useParams } from "react-router-dom";
-import { memberData } from "shared/MemberData";
+import { memberData } from "shared/memberData";
 import styled from "styled-components";
 
 const StContainer = styled.div`
