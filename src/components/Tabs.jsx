@@ -1,7 +1,7 @@
 import { MemberContext } from "context/MemberContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { memberData } from "shared/MemberData";
+import { memberData } from "shared/memberData";
 import styled, { css } from "styled-components";
 
 const StLink = styled(Link)`
