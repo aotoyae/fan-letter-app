@@ -86,7 +86,6 @@ function Form({ letters, setLetters, activeMember, setActiveMember }) {
     const {
       target: { value },
     } = e;
-    console.log(e);
     if (value.length > maxlength) e.target.value = value.substr(0, maxlength);
   };
 
@@ -104,9 +103,9 @@ function Form({ letters, setLetters, activeMember, setActiveMember }) {
         <StLabel>내용</StLabel>
         <textarea
           value={content}
+          onInput={(e) => handleOnInput(e, 100)}
           onChange={(e) => setContent(e.target.value)}
           placeholder="최대 100자"
-          maxLength={100}
         />
       </StSection>
       <StSelectSection>
