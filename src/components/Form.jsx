@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import uuid from "react-uuid";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LetterContext } from "context/LetterContext";
 import { MemberContext } from "context/MemberContext";
+import { useNavigate } from "react-router-dom";
 
 const StForm = styled.form`
   height: 100%;
@@ -52,6 +53,11 @@ const StBtn = styled.button`
 function Form() {
   const { letters, setLetters } = useContext(LetterContext);
   const { activeMember, setActiveMember } = useContext(MemberContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate(`/member/${activeMember}`);
+  }, [navigate, activeMember]);
 
   const [nickName, setNickName] = useState("");
   const [content, setContent] = useState("");
